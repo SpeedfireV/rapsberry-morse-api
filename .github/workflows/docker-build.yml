@@ -1,11 +1,10 @@
 name: Docker Build Check
 
-# This triggers the script every time you push to 'main' or 'develop'
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build-and-test:
