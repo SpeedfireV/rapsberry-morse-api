@@ -7,6 +7,7 @@ class Symbol(IntEnum):
     DASH = 1
 
 class MessageRequest(BaseModel):
+    device_uid: str
     symbol: Symbol
 
 app = FastAPI()
