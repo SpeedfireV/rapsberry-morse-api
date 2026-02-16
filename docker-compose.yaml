@@ -5,5 +5,13 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
+    depends_on:
+      - redis
     environment:
       - PYTHONUNBUFFERED=1
+      - REDIS_HOST=redis
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
