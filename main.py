@@ -4,6 +4,7 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect, status, HTTPExcepti
 from pydantic import BaseModel
 from uuid import uuid4
 import redis
+import os
 
 class Symbol(IntEnum):
     DOT = 0
@@ -21,7 +22,8 @@ class MessageRequest(BaseModel):
 
 app = FastAPI()
 
-redis_client = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+redis_client = redis.Redis(host=REDIS_HOST, port=6379, db=0, decode_responses=True)
 
 
 class ConnectionManager:
